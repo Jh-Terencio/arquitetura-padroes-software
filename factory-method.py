@@ -1,6 +1,5 @@
 from abc import ABCMeta, abstractstaticmethod
 
-# Interface para as classes de personagens
 class IPersonagem(metaclass=ABCMeta):
 
   @abstractstaticmethod
@@ -10,8 +9,6 @@ class IPersonagem(metaclass=ABCMeta):
   @abstractstaticmethod
   def equipamentos(self):
       """ Método de equipamentos """
-
-# Implementações concretas das classes de personagens
 class Guerreiro(IPersonagem):
 
   def habilidades(self):
@@ -19,7 +16,7 @@ class Guerreiro(IPersonagem):
 
   def equipamentos(self):
       return "Espada e Armadura"
-
+    
 class Mago(IPersonagem):
 
   def habilidades(self):
@@ -36,14 +33,12 @@ class Arqueiro(IPersonagem):
   def equipamentos(self):
       return "Arco e Flechas"
 
-# Fábrica abstrata para criar os personagens
 class IFabricaPersonagem(metaclass=ABCMeta):
 
   @abstractstaticmethod
   def criar_personagem(self):
       """ Método para criar personagens """
 
-# Fábricas concretas para cada classe de personagem
 class FabricaGuerreiro(IFabricaPersonagem):
   def criar_personagem(self):
       return Guerreiro()
@@ -56,7 +51,6 @@ class FabricaArqueiro(IFabricaPersonagem):
   def criar_personagem(self):
       return Arqueiro()
 
-# Cliente para testar o padrão Factory Method
 class Cliente:
   def __init__(self):
     self.personagens = []
@@ -68,7 +62,6 @@ class Cliente:
     print(f"Habilidade: {personagem.habilidades()}")
     print(f"Equipamento: {personagem.equipamentos()}\n")
 
-# Testando o código
 if __name__ == "__main__":
   cliente = Cliente()
 

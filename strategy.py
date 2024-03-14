@@ -4,11 +4,11 @@ class IEstrategia(metaclass=ABCMeta):
   
   @abstractstaticmethod
   def comportamento(self):
-    """ Método de Habilidades """
+    """ Método de comportamento """
   
   @abstractstaticmethod
   def nivel_atributo(self):
-    """ Método de Habilidades """
+    """ Método de atributo """
 
 class Agressividade(IEstrategia):
   
@@ -69,8 +69,9 @@ class BaseMilitar:
 # Testando o código
 if __name__ == "__main__":
 
-    acao = input("Sua tropa está indo ao campo de batalha, o que deseja fazer?\n[1]Atacar inimigos\n[2]Se defender dos inimigos\n[3]Definir estratégia de ataque\n[4]Flanquer inimigos\n")
-      
+  acao = input("Sua tropa está indo ao campo de batalha, o que deseja fazer?\n[0]Desistir da guerra\n[1]Atacar inimigos\n[2]Se defender dos inimigos\n[3]Definir estratégia de ataque\n[4]Flanquer inimigos\n")
+    
+  while acao != "0":
     # Criando personagens usando as fábricas
     if acao == "1":
       nivel = input("\nDigite o nível de força do ataque: ")
@@ -92,4 +93,7 @@ if __name__ == "__main__":
       tropa = BaseMilitar(Flanquemaneto(nivel))
       tropa.acao()
       tropa.atributos()
-    
+      
+    acao = input("\nQual será sua próxima ação comandante?\n[0]Desistir da guerra\n[1]Atacar inimigos\n[2]Se defender dos inimigos\n[3]Definir estratégia de ataque\n[4]Flanquer inimigos\n")
+
+  print("Desistindo da guerra comandante, fomos derrotados...")
